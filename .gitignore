@@ -1,0 +1,27 @@
+# PyCharm/IDEA 配置文件
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# 项目文件
+Massachusets_1024/
+Massachusets/
+Massachusets_512/
+DeepGlobe/
+logs_weights/
+pretrain_weight/
+results/DeepGlobe/
+results/Mass/
+comet_logs/
+Massachusets_Clean_1500/
+Massachusets_Clean_1024/
+results/
+
+
+__pyache__/
+*.pth
+*.zip
+*.png
+*.xls;xlsx;csv

@@ -1,0 +1,61 @@
+# 1. 模型定义 (必需)
+model_filename: 'ccnet_model'
+model_classname: 'CCNet'
+
+# model_args 包含了实例化模型类时需要的所有参数
+# 根据 ccnet_model.py，其 __init__ 函数为 __init__(self, n_classes=1)
+model_args:
+  n_classes: 1
+
+# 2. 前向传播额外参数 (可选)
+# CCNet 模型的 forward 函数只接收输入张量 x，因此不需要此节
+# forward_args:
+
+# 3. 训练超参数
+random_seed: 6
+epochs: 150
+batch_size: 2
+learning_rate: 0.0002
+weight_decay: 0.0001
+amp: true
+load: null
+reset_scheduler_on_load: false
+warm_up_step: 100
+max_norm: 20
+
+# 4. 数据集参数
+dataset_name: 'Massachusets_1024'
+root_dir: 'null'
+image_size: 1024
+
+# 5. 评估与保存
+evaluate_epoch: 1
+evaluate_inteval: 1
+save_checkpoint: true
+save_interval: 25
+save_best_model: true
+
+# 6. 日志参数
+log_project_name: 'CCNet_Mass'
+
+# 7. 推理阶段配置
+inference:
+  model_path: 'null'
+  threshold: 0.5
+  # forward_args:
+  save_outputs: true
+  save_binary_mask: true
+  save_prob_map: false
+  save_error_map: true
+
+tta:
+  enable: true
+  ops:
+    - 'identity' # 原始图像
+    - 'hflip'    # 水平翻转
+    - 'vflip'    # 垂直翻转
+
+# 8. Comet.ml 在线日志
+comet_ml:
+  api_key: 'null'
+  project_name: ''

@@ -1,0 +1,115 @@
+# ./config/Anchor-SAM.yaml
+
+# 1. 模型定义 (必需)
+# ----------------------------------------------------------------
+# model_filename: 指向包含模型类的 Python 文件名 (不含 .py)
+model_filename: 'SAM2Point1NetBayesian'
+# model_classname: Python 文件中要实例化的主模型类名
+model_classname: 'SAM2Point1Net'
+
+# model_args:
+#   这里的键必须与 SAM2Point1Net 类的 __init__ 方法的参数名完全匹配。
+model_args:
+  # model_size: 选择 SAM 2.1 编码器的规模。
+  # 可选值: 'tiny', 'small', 'base', 'large'
+  # 注意：更改此项时，也需要更新下面的 pretrained_weights_path。
+  model_size: 'large'
+
+  # pretrained_weights_path: 编码器预训练权重的路径。
+  # 设为 null 或空字符串 '' 表示不加载任何权重，进行随机初始化。
+  pretrained_weights_path: '/home/wenhai-li/Code/SAM-RoadSegment/pretrain_weight/sam2.1_hiera_large.pt'
+
+  # verbose: 是否在模型前向传播时打印详细的维度信息
+  verbose: false
+
+training_strategy:
+  # mode: 定义当前运行的训练模式。
+  # - 'train_all': (默认) 训练网络中的所有参数。
+  # - 'adapter_only': 冻结除 'dscg_adapter' 外的所有参数，只微调适配器。
+  mode: 'train_all'
+
+
+# 2. 前向传播额外参数 (可选)
+# ----------------------------------------------------------------
+# SAM2Point1Net 的 forward 函数只接收输入张量 x，因此不需要此节
+# forward_args:
+
+
+# 3. 训练超参数
+# ----------------------------------------------------------------
+random_seed: 6
+epochs: 200
+batch_size: 2
+learning_rate: 0.0002
+weight_decay: 0.0001
+amp: true
+load: null
+reset_scheduler_on_load: false
+warm_up_step: 100
+max_norm: 1.0
+
+# 新增: 学习率调度器配置
+scheduler:
+  # 调度器: 'ReduceLROnPlateau' 或 'CosineAnnealingLR'
+  active_scheduler: 'CosineAnnealingLR'
+
+  # ReduceLROnPlateau 的参数块
+  ReduceLROnPlateau_params:
+    factor: 0.2     # new_lr = lr * factor
+    patience: 5
+    min_lr: 1.0e-6  # 学习率下限
+    mode: 'max'     # 监控指标，F1越高越好，所以是 'max'
+    verbose: true   # 当学习率更新时，在控制台打印信息
+
+  # CosineAnnealingLR 的参数块
+  CosineAnnealingLR_params:
+    T_max: 200        # 一个周期的长度, 匹配上面的 epochs
+    eta_min: 1.0e-6   # 学习率下限
+
+
+# 4. 数据集参数
+# ----------------------------------------------------------------
+dataset_name: 'DeepGlobe'
+root_dir: '/home/wenhai-li/Code/SAM-RoadSegment'
+image_size: 1024
+
+
+# 5. 评估与保存
+# ----------------------------------------------------------------
+evaluate_epoch: 1
+evaluate_inteval: 1
+save_checkpoint: true
+save_interval: 50
+save_best_model: true
+
+
+# 6. 日志参数
+# ----------------------------------------------------------------
+log_project_name: 'SAM2.1Net-Road-Segmentation'
+
+
+# 7. 推理阶段配置
+# ----------------------------------------------------------------
+inference:
+  # model_path: 指向您训练好的最佳模型权重文件 (.pth)
+  model_path: ''
+  threshold: 0.5
+  save_outputs: true
+  save_binary_mask: true
+  save_prob_map: false
+  save_error_map: true
+
+tta:
+  enable: false  # 设置为 true 来启用 TTA, false 则禁用
+  ops:
+    - 'identity' # 原始图像
+    - 'hflip'    # 水平翻转
+    - 'vflip'    # 垂直翻转
+    - 'rot90'    # 顺时针旋转90度
+
+
+# 8. Comet.ml 在线日志 API
+# ----------------------------------------------------------------
+comet_ml:
+  api_key: ''
+  project_name: ''
