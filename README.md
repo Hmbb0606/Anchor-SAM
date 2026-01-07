@@ -157,7 +157,6 @@ If you find this code or research helpful, please consider citing our paper (Bib
 @article{li2025anchorsam,
   title={Anchor-SAM: Active Mining of Latent Anchors from SAM Encoder for Road Extraction},
   author={Li, Wenhai and Peng, Jiangtao and Huang, Xiaohui and Ban, Yifang},
-  journal={IEEE Transactions on Geoscience and Remote Sensing},
   year={2025},
   note={Under Review}
 }
