@@ -4,14 +4,9 @@
 
 **Wenhai Li**, **Xiaohui Huang**, **Xiaofei Yang**, **Yicong Zhou** (Senior Member, IEEE), **Jiangtao Peng** (Senior Member, IEEE), **Yifang Ban** (Senior Member, IEEE), **Nan Jiang**
 
-*Institute of Data Science and Deep Learning, East China Jiaotong University*
-
 </div>
 
 ## 📖 Introduction
-
-This repository is the official implementation of the paper **"Anchor-SAM: Active Mining of Latent Anchors from SAM Encoder for Road Extraction"**, currently under review at **IEEE Transactions on Circuits and Systems for Video Technology (TCSVT)**.
-
 **Anchor-SAM** leverages the powerful feature representation of the **Segment Anything Model (SAM) 2.1**, proposing a novel framework to actively mine latent semantic anchors from the encoder. This approach significantly enhances the connectivity and topological completeness of road extraction in high-resolution remote sensing imagery.
 
 ## 📂 Project Structure
@@ -162,7 +157,7 @@ If you find this code or research helpful, please consider citing our paper (Bib
 @article{li2025anchorsam,
   title={Anchor-SAM: Active Mining of Latent Anchors from SAM Encoder for Road Extraction},
   author={Li, Wenhai and Peng, Jiangtao and Huang, Xiaohui and Ban, Yifang},
-  journal={IEEE Transactions on Circuits and Systems for Video Technology (TCSVT)},
+  journal={IEEE Transactions on Geoscience and Remote Sensing},
   year={2025},
   note={Under Review}
 }
