@@ -13,11 +13,11 @@ model_args:
   # model_size: 选择 SAM 2.1 编码器的规模。
   # 可选值: 'tiny', 'small', 'base', 'large'
   # 注意：更改此项时，也需要更新下面的 pretrained_weights_path。
-  model_size: 'large'
+  model_size: 'tiny'
 
   # pretrained_weights_path: 编码器预训练权重的路径。
   # 设为 null 或空字符串 '' 表示不加载任何权重，进行随机初始化。
-  pretrained_weights_path: '/home/wenhai-li/Code/SAM-RoadSegment/pretrain_weight/sam2.1_hiera_large.pt'
+#  pretrained_weights_path: '/home/wenhai-li/Code/SAM-RoadSegment/pretrain_weight/sam2.1_hiera_large.pt'
 
   # verbose: 是否在模型前向传播时打印详细的维度信息
   verbose: false
@@ -70,7 +70,7 @@ scheduler:
 # 4. 数据集参数
 # ----------------------------------------------------------------
 dataset_name: 'DeepGlobe'
-root_dir: '/home/wenhai-li/Code/SAM-RoadSegment'
+root_dir: '/home/wenhai-li/Code/Anchor-SAM/datasets'
 image_size: 1024
 
 
@@ -92,9 +92,9 @@ log_project_name: 'SAM2.1Net-Road-Segmentation'
 # ----------------------------------------------------------------
 inference:
   # model_path: 指向您训练好的最佳模型权重文件 (.pth)
-  model_path: ''
+  model_path: '/home/wenhai-li/Code/Anchor-SAM/logs_weights/paramete_exp/DeepGlobe-Tiny.pth'
   threshold: 0.5
-  save_outputs: true
+  save_outputs: false
   save_binary_mask: true
   save_prob_map: false
   save_error_map: true
@@ -113,3 +113,5 @@ tta:
 comet_ml:
   api_key: ''
   project_name: ''
+
+  

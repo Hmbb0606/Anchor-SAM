@@ -134,7 +134,7 @@ python model_profiler.py
 The project uses `YAML` files for flexible configuration. Example (`config/Anchor-SAM.yaml`):
 
 ```yaml
-model_classname: 'SAM2Point1Net'
+model_classname: 'AnchorSAM'
 model_args:
   model_size: 'large'
   # Path to the SAM 2.1 checkpoint
@@ -157,8 +157,11 @@ If you find this code or research helpful, please consider citing our paper (Bib
 @article{li2025anchorsam,
   title={Anchor-SAM: Active Mining of Latent Anchors from SAM Encoder for Road Extraction},
   author={Li, Wenhai and Peng, Jiangtao and Huang, Xiaohui and Ban, Yifang},
-  year={2025},
-  note={Under Review}
+  year={2026},
+  volume={64},
+  number={},
+  pages={1-14},
+  doi={10.1109/TGRS.2026.3684896}
 }
 ```
 
