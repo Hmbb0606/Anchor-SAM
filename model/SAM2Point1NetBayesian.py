@@ -1,17 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-SAM 2.1 编码器-解码器完整分割模型
-
-本文件整合了 SAM 2.1 编码器、自定义的 MSDA 融合模块以及一个 FPN 风格的解码器，
-形成一个完整的、端到端的图像分割网络。
-
-功能包括：
-1.  完整的、自包含的模型定义。
-2.  支持通过参数选择 'tiny', 'small', 'base', 'large' 四种不同大小的编码器。
-3.  在模型初始化时尝试加载编码器的预训练权重。
-4.  解码器使用 DySample 进行动态上采样，并与 FPN 特征逐级融合。
-5.  最终模型 (SAM2Point1Net) 将编码器和解码器封装在一起。
-"""
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -22,24 +9,15 @@ import warnings
 
 warnings.filterwarnings("ignore", "Now, we support DCNv4 in InternImage.")
 
-# --- 导入您提供的自定义模块 ---
-# 请确保 StageFour_Output.py 和 Dysample.py 与此文件位于同一目录下
 try:
     from .StageFour_Output import MSDAFusionModule, DCNv3Wrapper
     from .Dysample import DySample
-    # === 新增模块导入 ===
     from .DSABayesian import FPN_DSA_Module
-    # 新增审稿人建议的上下问尺度聚合模块 DLinkBlock
 except ImportError as e:
     print(f"导入错误: {e}")
     print("请确保 StageFour_Output.py, Dysample.py 和 DSABayesian.py 文件与本脚本位于同一目录。")
     exit()
 
-
-# ==============================================================================
-# 辅助工具模块 (Helper Utilities)
-# (此部分代码与您提供的版本保持一致)
-# ==============================================================================
 
 class DropPath(nn.Module):
     """
@@ -135,12 +113,6 @@ class PatchEmbed(nn.Module):
         x = self.proj(x)
         x = x.permute(0, 2, 3, 1)  # B C H W -> B H W C
         return x
-
-
-# ==============================================================================
-# Hiera 核心模块 (Hiera Core Modules)
-# (此部分代码与您提供的版本保持一致)
-# ==============================================================================
 
 def do_pool(x: torch.Tensor, pool: nn.Module) -> torch.Tensor:
     if pool is None:
@@ -298,12 +270,6 @@ class Hiera(nn.Module):
                 stage_outputs.append(x.permute(0, 3, 1, 2))
         return stage_outputs[::-1]
 
-
-# ==============================================================================
-# 颈部网络 (Neck)
-# (此部分代码与您提供的版本保持一致)
-# ==============================================================================
-
 class FpnNeck(nn.Module):
     def __init__(self, d_model: int, backbone_channel_list: List[int]):
         super().__init__()
@@ -322,11 +288,6 @@ class FpnNeck(nn.Module):
             prev_features = lateral_features + top_down_features
             outputs.append(prev_features)
         return outputs[::-1]
-
-
-# ==============================================================================
-# SAM 2.1 编码器模型 (SAM 2.1 Encoder Model)
-# ==============================================================================
 
 class SAM2Encoder(nn.Module):
     def __init__(self, model_size: str = 'base', pretrained_weights_path: str = None, verbose: bool = True):
@@ -410,25 +371,6 @@ class SAM2Encoder(nn.Module):
             print(f"  FPN Level 3 输出维度: {fpn_out3.shape} (对应 stage 3)")
             print(f"  FPN Level 4 输出维度: {fpn_out4.shape} (对应 stage 4)")
         return {"trunk_outputs": trunk_outputs, "fpn_outputs": neck_outputs}
-
-
-# ==============================================================================
-# === 新增模块: FPN风格的解码器 (NEW: FPN-Style Decoder) ===
-# ==============================================================================
-
-# class DecoderBlock(nn.Module):
-#     """一个基本的解码器块，用于特征融合和通道数调整。"""
-#
-#     def __init__(self, in_channels: int, out_channels: int):
-#         super().__init__()
-#         self.block = nn.Sequential(
-#             nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1, bias=False),
-#             nn.BatchNorm2d(out_channels),
-#             nn.ReLU(inplace=True)
-#         )
-#
-#     def forward(self, x):
-#         return self.block(x)
 
 class DecoderBlock(nn.Module):
     """
@@ -550,11 +492,6 @@ class SAM2Decoder(nn.Module):
 
         return logits
 
-
-# ==============================================================================
-# === 新增模块: 最终的完整分割模型 (NEW: Final Segmentation Model) ===
-# ==============================================================================
-
 class SAM2Point1Net(nn.Module):
     def __init__(self,
                  model_size: str = 'small',
@@ -602,11 +539,6 @@ class SAM2Point1Net(nn.Module):
 
         output_mask = self.decoder(encoder_features)
         return output_mask
-
-
-# ==============================================================================
-# 测试代码 (Test Execution)
-# ==============================================================================
 
 if __name__ == '__main__':
     # --- 1. 设置设备 ---

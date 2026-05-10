@@ -17,7 +17,7 @@ model_args:
 
   # pretrained_weights_path: 编码器预训练权重的路径。
   # 设为 null 或空字符串 '' 表示不加载任何权重，进行随机初始化。
-#  pretrained_weights_path: '/home/wenhai-li/Code/SAM-RoadSegment/pretrain_weight/sam2.1_hiera_large.pt'
+  pretrained_weights_path: '/home/wenhai-li/Code/SAM-RoadSegment/pretrain_weight/sam2.1_hiera_large.pt'
 
   # verbose: 是否在模型前向传播时打印详细的维度信息
   verbose: false
@@ -91,7 +91,6 @@ log_project_name: 'SAM2.1Net-Road-Segmentation'
 # 7. 推理阶段配置
 # ----------------------------------------------------------------
 inference:
-  # model_path: 指向您训练好的最佳模型权重文件 (.pth)
   model_path: '/home/wenhai-li/Code/Anchor-SAM/logs_weights/paramete_exp/DeepGlobe-Tiny.pth'
   threshold: 0.5
   save_outputs: false

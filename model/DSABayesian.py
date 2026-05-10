@@ -1,10 +1,6 @@
 import torch
 import torch.nn as nn
-# 外部依赖，在当前文件中缺失
 from .ops_dscn.dscn import DSCNX, DSCNY
-
-# === 新增模块: BFB Adapter 及其辅助类 (模仿 GBC.py) ===
-# 这是我们实现贝叶斯融合瓶颈的核心代码
 
 class BottConv(nn.Module):
     """

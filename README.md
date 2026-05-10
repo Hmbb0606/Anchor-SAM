@@ -38,19 +38,16 @@ conda create -n anchorsam python=3.10
 conda activate anchorsam
 ```
 
-**Step 2: Install PyTorch and CUDA**
-
-```bash
-# Install PyTorch
-pip install torch==2.2.0 torchvision==0.17.0 torchaudio==2.1.0
-```
-
-**Step 3: Install Dependencies**
+**Step 2: Install Dependencies**
 
 ```bash
 pip install -r requirements.txt
-pip install albumentations comet_ml thop prettytable openpyxl pyyaml
 ```
+
+**Step 3: Install DCNv3 and DSAN**
+
+
+For the installation of deformable convolution and deformable spatial attention related modules, please refer to [DCNv3](https://github.com/inspiros/dcnv3) and [DSAN](https://github.com/MarcYugo/DSAN-Deformable-Spatial-Attention).
 
 ### 2. Download Pre-trained Weights
 
@@ -154,12 +151,13 @@ inference:
 If you find this code or research helpful, please consider citing our paper (BibTeX will be updated upon acceptance):
 
 ```bibtex
-@article{li2025anchorsam,
+@article{li2026anchorsam,
   title={Anchor-SAM: Active Mining of Latent Anchors from SAM Encoder for Road Extraction},
-  author={Li, Wenhai and Peng, Jiangtao and Huang, Xiaohui and Ban, Yifang},
+  author={Wenhai Li and Xiaohui Huang and Xiaofei Yang and Yicong Zhou and Jiangtao Peng and Yifang Ban and Nan Jiang},
+  journal={IEEE Transactions on Geoscience and Remote Sensing},
   year={2026},
   volume={64},
-  number={},
+  articleno={5617514},
   pages={1-14},
   doi={10.1109/TGRS.2026.3684896}
 }

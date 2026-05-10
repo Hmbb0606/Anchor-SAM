@@ -4,8 +4,6 @@ import torch.nn.functional as F
 from typing import List, Tuple, Optional
 import math
 
-# --- 导入 DCNv3 ---
-# 使用您指定的官方源码编译模块的导入路径
 try:
     from .ops_dcnv3.modules.dcnv3 import DCNv3
 except ImportError:
