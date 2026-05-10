@@ -1,0 +1,18 @@
+# PyCharm/IDEA 配置文件
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# 项目文件
+__pyache__/
+__pycache__/
+*.pth
+*.zip
+*.png
+*.xls;xlsx;csv
+web/
+datasets/
+model/ops_dcnv3/
+model/ops_dscn/
