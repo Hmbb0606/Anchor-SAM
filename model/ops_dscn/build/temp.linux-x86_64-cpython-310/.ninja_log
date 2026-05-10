@@ -1,0 +1,4 @@
+# ninja log v5
+1	2877	1757233129539257032	/home/wenhai-li/Code/SAM-RoadSegment/model/ops_dscn/build/temp.linux-x86_64-cpython-310/home/wenhai-li/Code/SAM-RoadSegment/model/ops_dscn/src/cpu/dscn_cpu.o	71015bf715de921e
+1	9041	1757233135698910863	/home/wenhai-li/Code/SAM-RoadSegment/model/ops_dscn/build/temp.linux-x86_64-cpython-310/home/wenhai-li/Code/SAM-RoadSegment/model/ops_dscn/src/vision.o	497ffa5e248e7f15
+1	21113	1757233147766242147	/home/wenhai-li/Code/SAM-RoadSegment/model/ops_dscn/build/temp.linux-x86_64-cpython-310/home/wenhai-li/Code/SAM-RoadSegment/model/ops_dscn/src/cuda/dscn_cuda.o	699db6b550da25ce

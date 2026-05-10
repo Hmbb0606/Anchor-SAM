@@ -1,0 +1,4 @@
+# ninja log v5
+0	2722	1756981221878512552	/home/wenhai-li/Code/InternImage-master/segmentation/ops_dcnv3/build/temp.linux-x86_64-cpython-310/home/wenhai-li/Code/InternImage-master/segmentation/ops_dcnv3/src/cpu/dcnv3_cpu.o	b18f568651b2be32
+0	9133	1756981228294385648	/home/wenhai-li/Code/InternImage-master/segmentation/ops_dcnv3/build/temp.linux-x86_64-cpython-310/home/wenhai-li/Code/InternImage-master/segmentation/ops_dcnv3/src/vision.o	be823728cf9c1306
+0	21775	1756981240930137156	/home/wenhai-li/Code/InternImage-master/segmentation/ops_dcnv3/build/temp.linux-x86_64-cpython-310/home/wenhai-li/Code/InternImage-master/segmentation/ops_dcnv3/src/cuda/dcnv3_cuda.o	ee3a58211c7832

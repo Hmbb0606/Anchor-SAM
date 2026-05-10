@@ -1,0 +1,12 @@
+setup.py
+/home/wenhai-li/Code/SAM-RoadSegment/model/ops_dscn/src/vision.cpp
+/home/wenhai-li/Code/SAM-RoadSegment/model/ops_dscn/src/cpu/dscn_cpu.cpp
+/home/wenhai-li/Code/SAM-RoadSegment/model/ops_dscn/src/cuda/dscn_cuda.cu
+DSCN.egg-info/PKG-INFO
+DSCN.egg-info/SOURCES.txt
+DSCN.egg-info/dependency_links.txt
+DSCN.egg-info/top_level.txt
+functions/__init__.py
+functions/dscn_func.py
+modules/__init__.py
+modules/dscn.py
