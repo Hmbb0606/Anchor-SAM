@@ -6,10 +6,12 @@
 out/
 
 # 项目文件
-
-
 __pyache__/
+__pycache__/
 *.pth
 *.zip
 *.png
 *.xls;xlsx;csv
+web/
+model/
+datasets/
