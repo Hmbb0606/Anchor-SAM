@@ -9,7 +9,7 @@
 ## 📖 Introduction
 
 <p align="center">
-  <img src="./figures/Motivation.png" alt="Motivation of Semantic Anchors" width="850">
+  <img src="./figures/Motivation.png" alt="Motivation of Semantic Anchors" width="550">
 </p>
 
 **Anchor-SAM** is built upon a key observation: the deep features of the **SAM2 encoder** contain sparse but meaningful **semantic anchors**, which implicitly encode global structural cues of road networks. Based on this insight, we propose an anchor-driven framework to mine, aggregate, and propagate these cues for more complete road extraction.
