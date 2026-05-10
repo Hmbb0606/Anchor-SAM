@@ -7,8 +7,20 @@
 </div>
 
 ## 📖 Introduction
-**Anchor-SAM** leverages the powerful feature representation of the **Segment Anything Model (SAM) 2.1**, proposing a novel framework to actively mine latent semantic anchors from the encoder. This approach significantly enhances the connectivity and topological completeness of road extraction in high-resolution remote sensing imagery.
 
+<p align="center">
+  <img src="./figures/Motivation.png" alt="Motivation of Semantic Anchors" width="850">
+</p>
+
+**Anchor-SAM** is built upon a key observation: the deep features of the **SAM2 encoder** contain sparse but meaningful **semantic anchors**, which implicitly encode global structural cues of road networks. Based on this insight, we propose an anchor-driven framework to mine, aggregate, and propagate these cues for more complete road extraction.
+
+## 📖 Method Overview
+
+<p align="center">
+  <img src="./figures/Overview.png" alt="Overview of Anchor-SAM" width="850">
+</p>
+
+Anchor-SAM follows an encoder-decoder paradigm. The SAM2 encoder first extracts hierarchical multi-scale features from the input remote sensing image. The deepest encoder feature is fed into the **MDCP** to perceive and aggregate sparse semantic anchors, while skip-connected features are refined by the **DBCIM** to enhance road-related responses and suppress background interference. Finally, the decoder progressively fuses the refined features and reconstructs a continuous road segmentation mask.
 ## 📂 Project Structure
 
 The directory structure is organized as follows:

@@ -10,7 +10,7 @@ __pyache__/
 __pycache__/
 *.pth
 *.zip
-*.png
+#*.png
 *.xls;xlsx;csv
 web/
 datasets/
