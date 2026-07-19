@@ -179,7 +179,3 @@ If you find this code or research helpful, please consider citing our paper (Bib
 
 * Thanks to the authors of [Segment Anything Model 2](https://github.com/facebookresearch/segment-anything-2) for their open-source contribution.
 * We also acknowledge the open-source implementations of comparison methods used in this study.
-
-<div align="center">
-<i>Created by Wenhai Li</i>
-</div>
